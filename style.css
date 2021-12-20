@@ -1,0 +1,9 @@
+li:nth-child(3n-2) a {
+    color: red;
+    text-decoration: none;
+}
+
+ ul li .empat {
+     color: green;
+ }
+
