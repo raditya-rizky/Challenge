@@ -1,0 +1,360 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.body {
+  box-sizing: border-box;
+}
+
+.img {
+  width: 14em;
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px 0px rgba(41, 41, 41, 0.72);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(41, 41, 41, 0.72);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(41, 41, 41, 0.72);
+}
+
+.container {
+  height: 100vh;
+  width: 70%;
+  margin: 5em auto;
+  display: grid;
+  grid-template-areas:
+    "title paragraph"
+    "image image";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+.title {
+  grid-area: title;
+  align-self: start;
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+  padding-left: 1em;
+  font-weight: 700;
+}
+
+.text {
+  grid-area: paragraph;
+  font-family: "Poppins", sans-serif;
+  align-self: start;
+  width: 90%;
+}
+
+.text p {
+  padding-top: 1em;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+.text h3 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.image {
+  grid-area: image;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: "Poppins", sans-serif;
+  padding: 5em 0;
+  gap: 3.7em;
+  place-items: center;
+}
+
+.photo2 {
+  transform: translateY(7em);
+}
+
+.photo4 {
+  transform: translateY(3em);
+}
+
+.photo5 {
+  transform: translateY(10em);
+  padding-bottom: 2em;
+}
+
+.photo6 {
+  transform: translateY(3em);
+}
+
+.photo1,
+.photo2,
+.photo3,
+.photo4,
+.photo5,
+.photo6 {
+  position: relative;
+}
+.photo1 h3,
+.photo2 h3,
+.photo3 h3,
+.photo4 h3,
+.photo5 h3,
+.photo6 h3 {
+  padding-top: 0.7em;
+}
+
+.photo1 p {
+  position: absolute;
+  top: 4em;
+  transform: translateX(14.4em) rotate(90deg);
+  font-size: 0.8rem;
+}
+
+.photo2 p {
+  position: absolute;
+  top: 4em;
+  transform: translateX(15.3em) translateY(-1em) rotate(90deg);
+  font-size: 0.8rem;
+}
+
+.photo3 p {
+  position: absolute;
+  top: 4em;
+  transform: translateX(16em) translateY(-2em) rotate(90deg);
+  font-size: 0.8rem;
+}
+
+.photo4 p {
+  position: absolute;
+  top: 4em;
+  transform: translateX(15.7em) translateY(-1.5em) rotate(90deg);
+  font-size: 0.8rem;
+}
+
+.photo5 p {
+  position: absolute;
+  top: 4em;
+  transform: translateX(16em) translateY(-2em) rotate(90deg);
+  font-size: 0.8rem;
+}
+
+.photo6 p {
+  position: absolute;
+  top: 4em;
+  transform: translateX(16em) translateY(-2em) rotate(90deg);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+    grid-template-rows: 3em 1fr;
+  }
+  .img {
+    width: 12em;
+  }
+  .photo1 p,
+  .photo2 p,
+  .photo3 p,
+  .photo4 p,
+  .photo5 p,
+  .photo6 p {
+    font-size: 0.7rem;
+  }
+  .text p {
+    font-size: 1rem;
+  }
+  .text h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 100%;
+    grid-template-rows: 2em 6em;
+  }
+  .image {
+    gap: 1em;
+    margin: 2em 0;
+  }
+  .img {
+    width: 10em;
+  }
+  .photo1 p,
+  .photo2 p,
+  .photo3 p,
+  .photo4 p,
+  .photo5 p,
+  .photo6 p {
+    font-size: 0.6rem;
+  }
+  .photo1 p {
+    transform: translateX(13.7em) rotate(90deg);
+  }
+  .photo2 p {
+    transform: translateX(14.3em) translateY(-0.5em) rotate(90deg);
+  }
+  .photo3 p {
+    transform: translateX(15em) translateY(-2em) rotate(90deg);
+  }
+  .photo4 p {
+    transform: translateX(14.6em) translateY(-1.5em) rotate(90deg);
+  }
+  .photo5 p {
+    transform: translateX(15em) translateY(-1.5em) rotate(90deg);
+  }
+  .photo6 p {
+    transform: translateX(15em) translateY(-1.5em) rotate(90deg);
+  }
+  .text p {
+    padding-right: 3em;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 80vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "paragraph"
+      "image";
+    margin: 1em;
+    grid-template-rows: 1fr 1fr 2fr;
+  }
+  .img {
+    width: 10em;
+    margin: 0 1em;
+  }
+  .title {
+    grid-area: title;
+    margin-bottom: 2em;
+  }
+  .text {
+    grid-area: paragraph;
+    padding-left: 1em;
+  }
+  .image {
+    grid-area: image;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+    place-items: start;
+    margin-left: -1.3em;
+  }
+  .photo1 p {
+    transform: translateX(15em) rotate(90deg);
+  }
+  .photo2 p {
+    transform: translateX(16em) translateY(-1em) rotate(90deg);
+  }
+  .photo3 p {
+    transform: translateX(17em) translateY(-1.5em) rotate(90deg);
+  }
+  .photo4 p {
+    transform: translateX(16.5em) translateY(-1.5em) rotate(90deg);
+  }
+  .photo5 p {
+    transform: translateX(17em) translateY(-1.5em) rotate(90deg);
+  }
+  .photo6 p {
+    transform: translateX(17em) translateY(-1.5em) rotate(90deg);
+  }
+  .photo1 h3,
+  .photo2 h3,
+  .photo3 h3,
+  .photo4 h3,
+  .photo5 h3,
+  .photo6 h3 {
+    transform: translateX(1em) translateY(-1em);
+  }
+  .photo3 {
+    transform: translateY(3em);
+  }
+  .photo5 {
+    transform: translateY(6em);
+  }
+  .photo2 {
+    transform: translateY(5em);
+  }
+  .photo4 {
+    transform: translateY(8.5em);
+  }
+  .photo6 {
+    transform: translateY(11.5em);
+  }
+}
+
+@media (max-width: 430px) {
+  .img {
+    width: 8.5em;
+  }
+  .photo1 p {
+    transform: translateX(12.5em) rotate(90deg);
+  }
+  .photo2 p {
+    transform: translateX(13.4em) translateY(-1em) rotate(90deg);
+  }
+  .photo3 p {
+    transform: translateX(14.4em) translateY(-1.8em) rotate(90deg);
+  }
+  .photo4 p {
+    transform: translateX(13.7em) translateY(-1.4em) rotate(90deg);
+  }
+  .photo5 p {
+    transform: translateX(14.3em) translateY(-1.4em) rotate(90deg);
+  }
+  .photo6 p {
+    transform: translateX(14.3em) translateY(-1.4em) rotate(90deg);
+  }
+  .photo2 {
+    transform: translateX(-1em) translateY(5em);
+  }
+  .photo4 {
+    transform: translate(-1em) translateY(8.5em);
+  }
+  .photo6 {
+    transform: translate(-1em) translateY(11.5em);
+  }
+}
+
+@media (max-width: 430px) {
+  .title h1 {
+    font-size: 2rem;
+  }
+  .text h3 {
+    font-size: 1.1rem;
+    margin-top: -1.4em;
+  }
+  .text p {
+    font-size: 0.9rem;
+    margin-top: -1em;
+  }
+  .img {
+    width: 7em;
+  }
+  .photo1 h3,
+  .photo2 h3,
+  .photo3 h3,
+  .photo4 h3,
+  .photo5 h3,
+  .photo6 h3 {
+    font-size: 1rem;
+  }
+  .photo1 p {
+    transform: translateX(10.3em) rotate(90deg);
+  }
+  .photo2 p {
+    transform: translateX(11.3em) translateY(-1em) rotate(90deg);
+  }
+  .photo3 p {
+    transform: translateX(12em) translateY(-1.8em) rotate(90deg);
+  }
+  .photo4 p {
+    transform: translateX(11.4em) translateY(-1.4em) rotate(90deg);
+  }
+  .photo5 p {
+    transform: translateX(12em) translateY(-1.4em) rotate(90deg);
+  }
+  .photo6 p {
+    transform: translateX(12em) translateY(-1.4em) rotate(90deg);
+  }
+}
