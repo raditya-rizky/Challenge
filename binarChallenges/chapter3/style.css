@@ -1,0 +1,238 @@
+body {
+  background-color: black;
+}
+
+/* CSS Main Screen */
+.mainScreen {
+  background-image: url(assets/main-bg.jpg);
+  max-width: 1000px;
+  height: 668px;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.mainText h1 {
+  letter-spacing: 3px;
+}
+
+.mainText p {
+  font-weight: 400;
+}
+
+.bottomLink a {
+  font-size: 12px;
+  margin-bottom: -45px;
+}
+
+.bottomLink img {
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  margin-left: 50px;
+}
+
+nav .navbar-nav a {
+  font-size: 12px;
+  margin: 5px;
+  font-weight: 550;
+}
+/* Akhir CSS Main Screen */
+
+/* CSS Game Choice 1 */
+.gameChoice1 {
+  background-image: url(assets/the-games-bg.jpg);
+  max-width: 1000px;
+  height: 731px;
+  margin: 0 auto;
+  background-size: cover;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+/* Akhir CSS Game Choice 1 */
+
+/* CSS Game Choice 2 */
+.gameChoice2 {
+  background-image: url(assets/features.jpg);
+  max-width: 1000px;
+  height: 597px;
+  margin: 0 auto;
+  background-size: cover;
+}
+/* Akhir CSS Game Choice 2 */
+
+/* CSS Game Requirement */
+.gameRequirement {
+  background-image: url(assets/requirements.png);
+  max-width: 1000px;
+  height: 667px;
+  margin: 0 auto;
+  background-size: cover;
+}
+
+.row .text-warning {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.systemRequirement h2 {
+  font-size: 42px;
+}
+
+.row h3 {
+  font-size: 12px;
+}
+/* Akhir CSS Game Requirement */
+
+/* CSS Top Scores */
+.topScores {
+  background-image: url(assets/the-games-bg.jpg);
+  max-width: 1000px;
+  height: 731px;
+  margin: 0 auto;
+  background-size: cover;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.topScores h2 {
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-top: 50px;
+}
+
+.topScores p {
+  font-size: 14px;
+}
+.topScores .twitter {
+  position: absolute;
+  left: 90%;
+  top: 3%;
+}
+
+.topScores .btn {
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.topScores .card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Akhir CSS Top Scores */
+
+/* CSS Last Page */
+.lastPage {
+  background-image: url(assets/the-games-bg.jpg);
+  max-width: 1000px;
+  height: 731px;
+  margin: 0 auto;
+  background-size: cover;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.lastPage h3 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.lastPage h5 {
+  margin-top: 50px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.lastPage h6 {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.bottomMenu li a {
+  font-size: 12px;
+}
+
+.bottomMenu ul {
+  margin-bottom: -20px;
+}
+
+.footer {
+  margin-bottom: -50px;
+}
+
+/* Akhir CSS Last Page */
+
+/* Media Query */
+
+@media only screen and (max-width: 576px) {
+  .mainScreen,
+  .gameChoice1 .gameChoice2,
+  .gameRequirement,
+  .topScores,
+  .lastPage {
+    width: 100%;
+    padding: 0;
+    background-position: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mainScreen,
+  .gameChoice1,
+  .gameChoice2,
+  .gameRequirement,
+  .topScores,
+  .lastPage {
+    width: 100%;
+    padding: 0;
+    background-position: center;
+  }
+  .card .img-fluid {
+    display: none;
+  }
+  .topScores .card {
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .mainScreen,
+  .gameChoice1,
+  .gameChoice2,
+  .gameRequirement,
+  .topScores,
+  .lastPage {
+    width: 100%;
+    padding: 0;
+    background-position: center;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .mainScreen,
+  .gameChoice1,
+  .gameChoice2,
+  .gameRequirement,
+  .topScores,
+  .lastPage {
+    width: 100%;
+    padding: 0;
+    background-position: center;
+  }
+}
+/* @media only screen and (max-width: 1400px) {
+  .mainScreen,
+  .gameChoice1,
+  .gameChoice2,
+  .gameRequirement,
+  .topScores,
+  .lastPage {
+    width: 100%;
+    padding: 0;
+    background-position: center;
+  }
+} */
+/* Akhir Media Query */
