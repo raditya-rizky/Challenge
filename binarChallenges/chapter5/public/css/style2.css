@@ -1,0 +1,129 @@
+html,
+body {
+  height: 100%;
+  background-color: #a67a53;
+}
+
+.theGames {
+  height: 100%;
+  background-color: #a67a53;
+}
+
+header {
+  height: 50px;
+}
+
+header .btn-group .btn {
+  border-radius: 0%;
+}
+
+.btn-group h2 {
+  padding-left: 20px;
+}
+
+#versus {
+  position: absolute;
+  width: 450px;
+  font-size: 3rem;
+  font-weight: 900;
+  align-self: center;
+  cursor: default;
+}
+
+/* Rock */
+#userRock img {
+  border-radius: 25%;
+  width: 120px;
+  cursor: pointer;
+}
+
+#userRock img:hover {
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
+#comRock img {
+  border-radius: 25%;
+  width: 120px;
+  transition: all 0.3s;
+}
+/* End of ROck */
+
+/* Paper */
+#userPaper img {
+  border-radius: 15%;
+  cursor: pointer;
+  width: 100px;
+}
+
+#userPaper img:hover {
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
+#comPaper img {
+  border-radius: 15%;
+  width: 100px;
+  transition: all 0.3s;
+}
+/* End of Paper */
+
+/* Scissors */
+#userScissors img {
+  border-radius: 30%;
+  cursor: pointer;
+  width: 120px;
+}
+
+#userScissors img:hover {
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
+#comScissors img {
+  border-radius: 30%;
+  width: 120px;
+  transition: all 0.3s;
+}
+/* End of Scissors */
+
+/* Refresh */
+#refresh {
+  position: absolute;
+  width: 200px;
+  transition: all 0.3s;
+}
+
+#refresh img {
+  margin-top: 10px;
+  width: 70px;
+  border-radius: 70%;
+  cursor: pointer;
+}
+
+#refresh img:hover {
+  transform: scale(1.15);
+  transition: all 0.3s;
+}
+
+#refresh img:active {
+  background-color: #dec0a6;
+  transition: all 0.2s;
+  border-radius: 50%;
+}
+/* End of Refresh */
+
+@media screen and (max-width: 900px) {
+  #refresh {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    bottom: 5px;
+  }
+  #versus {
+    position: absolute;
+    bottom: 90px;
+    width: 100%;
+    margin: auto;
+  }
+}

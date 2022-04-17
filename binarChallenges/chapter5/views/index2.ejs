@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="../css/style2.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="theGames">
+      <header>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <a class="btn" href="/" role="button">
+            <img src="../game/arrow-88-32.png" alt="back" />
+          </a>
+
+          <h2 class="text-warning fs-4 pt-2">ROCK PAPER SCISSORS</h2>
+        </div>
+      </header>
+      <div class="container d-md-grid">
+        <div class="row justify-content-md-center text-center pt-2">
+          <div class="col col-lg-6 fs-1 fw-bold">PLAYER 1</div>
+          <div class="col col-lg-6 fs-1 fw-bold">COM</div>
+        </div>
+        <div
+          class="row justify-content-md-center text-center pt-md-5"
+          id="rock"
+        >
+          <div class="col col-lg-6" id="userRock">
+            <img
+              src="../game/listUser/userRock.png"
+              alt="userRock"
+              class="userRock"
+            />
+          </div>
+          <div class="col col-lg-6" id="comRock">
+            <img src="../game/listCom/comRock.png" alt="comRock" />
+          </div>
+        </div>
+        <div
+          class="row justify-content-md-center text-center pt-md-5"
+          id="paper"
+        >
+          <div class="col col-lg-6" id="userPaper">
+            <img
+              src="../game/listUser/userPaper.png"
+              alt="userPaper"
+              class="userPaper"
+            />
+          </div>
+          <div class="text-danger" id="versus">VS</div>
+          <div class="col col-lg-" id="comPaper">
+            <img src="../game/listCom/comPaper.png" alt="comPaper" />
+          </div>
+        </div>
+        <div
+          class="row justify-content-md-center text-center pt-md-5"
+          id="scissors"
+        >
+          <div class="col col-lg-6" id="userScissors">
+            <img
+              src="../game/listUser/userScissors.png"
+              alt="userScissors"
+              class="userScissors"
+            />
+          </div>
+          <div id="refresh" class="my-2">
+            <img
+              src="../game/refresh.png"
+              alt="refresh"
+              onClick="document.location.reload()"
+            />
+          </div>
+          <div class="col col-lg-6" id="comScissors">
+            <img src="../game/listCom/comScissors.png" alt="comScissors" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>
