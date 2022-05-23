@@ -1,12 +1,14 @@
 const express = require("express");
-const router = require("./router");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
-const users = require("./data/users.js");
+const methodOverride = require("method-override");
+const router = require("./router");
 
 const app = express();
 const PORT = 3000;
+
+app.use(methodOverride("_method"));
 
 app.use(express.static("public"));
 app.use(express.json());
