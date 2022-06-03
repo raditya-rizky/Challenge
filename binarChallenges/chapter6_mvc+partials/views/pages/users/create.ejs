@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../../partials/head"); %>
+  </head>
+  <body style="background-color: rgb(22, 22, 22)">
+    <div class="container text-white">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+          <h3 class="text-center">Add User</h3>
+          <form method="post" action="/users">
+            <div class="mb-3">
+              <h4>Primary</h4>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                id="username"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="text"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <h4>Profile</h4>
+            </div>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                style="text-transform: capitalize"
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input
+                style="text-transform: capitalize"
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="dateOfBirth" class="form-label">Date of Birth</label>
+              <input
+                type="date"
+                class="form-control"
+                id="dateOfBirth"
+                name="dateOfBirth"
+              />
+            </div>
+
+            <div class="row">
+              <div class="col-auto">
+                <button
+                  type="button"
+                  onclick="history.back()"
+                  class="btn btn-danger"
+                >
+                  Cancel
+                </button>
+              </div>
+
+              <div class="col-auto">
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include("../../partials/script"); %>
+  </body>
+</html>

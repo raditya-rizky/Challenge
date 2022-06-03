@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../../partials/head"); %>
+  </head>
+  <body style="background-color: rgb(22, 22, 22)">
+    <div class="container text-white">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+          <h3 class="text-center">Add User</h3>
+          <form method="post" action="/user/<%= userOne.id %>?_method=PUT">
+            <div class="mb-3">
+              <h4>Primary</h4>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                id="username"
+                value="<%= userOne.username %>"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="text"
+                class="form-control"
+                id="password"
+                name="password"
+                value="<%= userOne.password %>"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <h4>Profile</h4>
+            </div>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                style="text-transform: capitalize"
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                min="0"
+                value="<%= userOne.profile.name %>"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input
+                style="text-transform: capitalize"
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+                min="0"
+                value="<%= userOne.profile.address %>"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="dateOfBirth" class="form-label">Date of Birth</label>
+              <input
+                type="date"
+                class="form-control"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                value="<%= userOne.profile.dateOfBirth %>"
+                required
+              />
+            </div>
+
+            <div class="row">
+              <div class="col-auto">
+                <button
+                  type="button"
+                  onclick="history.back()"
+                  class="btn btn-warning"
+                >
+                  Cancel
+                </button>
+              </div>
+
+              <div class="col-auto">
+                <button type="reset" class="btn btn-secondary">
+                  Undo Changes
+                </button>
+              </div>
+
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+          <div class="col-auto mt-3 mb-5">
+            <form action="/user/<%= userOne.id %>?_method=DELETE" method="post">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                onclick="return confirm('Delete this user')"
+              >
+                <i class="bi-trash-fill"></i> Delete This User?
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include("../../partials/script"); %>
+  </body>
+</html>
