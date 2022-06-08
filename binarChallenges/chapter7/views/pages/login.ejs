@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head"); %>
+  </head>
+  <body style="background-color: rgb(22, 22, 22)">
+    <div class="container mt-5" style="background-color: rgb(22, 22, 22)">
+      <% if (msg.length !== 0) { %>
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+          <div class="alert alert-danger" role="alert"><%= msg %></div>
+        </div>
+      </div>
+      <% } %>
+      <div class="row justify-content-center text-light">
+        <div class="col-md-5">
+          <h1 class="text-center">Admin Login Page</h1>
+          <form method="post" action="/api/login">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                aria-describedby="emailHelp"
+                name="username"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include("../partials/script"); %>
+  </body>
+</html>

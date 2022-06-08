@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../../partials/head"); %>
+  </head>
+  <body style="background-color: rgb(22, 22, 22)">
+    <div class="container mt-5">
+      <div class="row justify-content-center text-light">
+        <div class="col-md-7">
+          <h3 class="my-3">User Detail</h3>
+          <% if (upd.length !== 0) { %>
+          <div class="row justify-content-center">
+            <div class="col-md-5 text-center">
+              <div class="alert alert-success" role="alert"><%= upd %></div>
+            </div>
+          </div>
+          <% } %>
+          <div class="justify-content-between">
+            <a class="btn btn-secondary" href="/api/users" role="button">
+              <i class="bi-arrow-left"></i> Back to Users List
+            </a>
+            <a
+              class="btn btn-primary"
+              href="/api/user/<%= findUser.id %>/edit"
+              role="button"
+            >
+              <i class="bi-pencil-fill"></i> Edit
+            </a>
+          </div>
+          <div class="table-responsive mt-3">
+            <table
+              class="table table-bordered table-dark table-striped table-hover"
+            >
+              <tbody>
+                <tr>
+                  <th scope="row" style="width: 50%">id</th>
+                  <td><%= findUser.id %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Username</th>
+                  <td><%= findUser.username %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Password</th>
+                  <td><%= findUser.password %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h5 class="my-3">Profile:</h5>
+          <div class="table-responsive mt-3">
+            <table
+              class="table table-bordered table-dark table-striped table-hover"
+            >
+              <tbody>
+                <tr>
+                  <th scope="row" style="width: 50%">Name</th>
+                  <td><%= findUser.profile.name %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Address</th>
+                  <td><%= findUser.profile.address %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Date of Birth</th>
+                  <td><%= findUser.profile.dateOfBirth %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h5 class="my-3">User History:</h5>
+          <div class="table-responsive mt-3">
+            <% findUser.history.slice().reverse().forEach((element, index) => {
+            %>
+            <table
+              class="table table-bordered table-dark table-striped table-hover"
+            >
+              <tbody>
+                <tr>
+                  <th scope="row" style="width: 50%">Profile Updated At:</th>
+                  <td><%= element.updatedAt %></td>
+                </tr>
+              </tbody>
+            </table>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include("../../partials/script"); %>
+  </body>
+</html>

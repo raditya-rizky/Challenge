@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../../partials/head"); %>
+  </head>
+  <body style="background-color: rgb(22, 22, 22)">
+    <div class="container mt-5">
+      <% if (msg.length !== 0) { %>
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+          <div class="alert alert-success" role="alert"><%= msg %></div>
+        </div>
+      </div>
+      <% } %> <% if (add.length !== 0) { %>
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+          <div class="alert alert-success" role="alert"><%= add %></div>
+        </div>
+      </div>
+      <% } %> <% if (dlt.length !== 0) { %>
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+          <div class="alert alert-success" role="alert"><%= dlt %></div>
+        </div>
+      </div>
+      <% } %>
+      <div class="row justify-content-center text-light">
+        <div class="col-md-7">
+          <h1 class="text-center">Users List</h1>
+          <div class="row justify-content-end">
+            <div class="col-md-3">
+              <a class="btn btn-primary" href="/api/user/create" role="button">
+                <i class="bi-plus-lg"></i> Add New
+              </a>
+            </div>
+          </div>
+          <table class="table table-dark mt-4">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% allUsers.forEach((user, index) => { %>
+              <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= user.username %></td>
+                <td><%= user.password %></td>
+                <td class="w-25">
+                  <div class="d-flex gap-2 text-nowrap">
+                    <a
+                      class="btn btn-success btn-sm"
+                      href="/api/user/<%= user.id %>"
+                      role="button"
+                    >
+                      <i class="bi-eye-fill"></i> Detail
+                    </a>
+
+                    <a
+                      class="btn btn-primary btn-sm"
+                      href="/api/user/<%= user.id %>/edit"
+                      role="button"
+                    >
+                      <i class="bi-pencil-fill"></i> Edit
+                    </a>
+
+                    <form
+                      action="/api/user/<%= user.id %>?_method=DELETE"
+                      method="post"
+                    >
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-sm"
+                        onclick="return confirm('Delete this user?')"
+                      >
+                        <i class="bi-trash-fill"></i> Delete
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <%- include("../../partials/script"); %>
+  </body>
+</html>
