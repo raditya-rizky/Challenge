@@ -1,4 +1,5 @@
 const { Admin } = require("../models");
+const passport = require("../lib/passport");
 
 exports.page = (req, res) => {
   res.render("pages/login", {
@@ -7,20 +8,8 @@ exports.page = (req, res) => {
   });
 };
 
-exports.admin = async (req, res) => {
-  const { username, password } = req.body;
-  const admins = await Admin.findOne({
-    where: {
-      username: username,
-      password: password,
-    },
-  });
-
-  if (admins === null) {
-    req.flash("msg", "Incorrect username or password!");
-    res.redirect("/login");
-  } else {
-    req.flash("msg", `Login successful!`);
-    res.redirect("/api/users");
-  }
-};
+exports.admin = passport.authenticate("local", {
+  successRedirect: "/api/users",
+  failureRedirect: "/api/login",
+  failureFlash: true,
+});

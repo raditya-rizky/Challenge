@@ -3,6 +3,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
+const passport = require("./lib/passport");
 const router = require("./router");
 
 const app = express();
@@ -25,6 +26,9 @@ app.use(
   })
 );
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set("view engine", "ejs");
 
