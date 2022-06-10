@@ -13,18 +13,17 @@ app.use(methodOverride("_method"));
 
 app.use(express.static("public"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
-// Flash message
 app.use(cookieParser("secret"));
 app.use(
   session({
-    cookie: { maxAge: 6000 },
     secret: "secret",
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
+
 app.use(flash());
 
 app.use(passport.initialize());
@@ -39,6 +38,12 @@ app.use((req, res, next) => {
 
 // Router
 app.use(router);
+
+// unknown page
+app.use((req, res) => {
+  res.status(404);
+  res.send(`<h1>404</h1>`);
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening to http://localhost:${PORT}`);

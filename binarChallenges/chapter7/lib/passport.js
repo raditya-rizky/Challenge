@@ -1,7 +1,12 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { Admin } = require("../models");
-const flash = require("connect-flash");
+const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
+const { Admin, UserGame } = require("../models");
+
+const options = {
+  jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+  secretOrKey: "Tugasnya sulit banget",
+};
 
 async function authenticate(username, password, done) {
   try {
@@ -16,11 +21,17 @@ async function authenticate(username, password, done) {
     return done(null, admin);
   } catch (err) {
     /* Parameter ketiga akan dilempar ke dalam flash */
-    return done(null, false, {
-      messages: "Incorrect username or password!",
-    });
+    return done(null, false, { msg: "Invalid Username or Password!!" });
   }
 }
+
+passport.use(
+  new JwtStrategy(options, async (payload, done) => {
+    User.findByPk(payload.id)
+      .then((user) => done(null, user))
+      .catch((err) => done(err, false));
+  })
+);
 
 passport.use(
   new LocalStrategy(
@@ -32,7 +43,7 @@ passport.use(
 /* Serialize dan Deserialize
    Cara untuk membuat sesi dan menghapus sesi
  */
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((admin, done) => done(null, admin.id));
 passport.deserializeUser(async (id, done) =>
   done(null, await Admin.findByPk(id))
 );

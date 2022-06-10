@@ -1,5 +1,5 @@
-const { Admin } = require("../models");
-const passport = require("../lib/passport");
+const { Admin } = require("../../models");
+const passport = require("../../lib/passport");
 
 exports.page = (req, res) => {
   res.render("pages/login", {

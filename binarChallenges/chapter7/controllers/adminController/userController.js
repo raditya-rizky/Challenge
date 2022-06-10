@@ -1,4 +1,4 @@
-const { UserGame, UserProfile, UserHistory } = require("../models");
+const { UserGame, UserProfile, UserHistory } = require("../../models");
 
 exports.index = async (req, res) => {
   const allUsers = await UserGame.findAll({
