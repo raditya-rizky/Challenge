@@ -27,7 +27,7 @@ async function authenticate(username, password, done) {
 
 passport.use(
   new JwtStrategy(options, async (payload, done) => {
-    User.findByPk(payload.id)
+    UserGame.findByPk(payload.id)
       .then((user) => done(null, user))
       .catch((err) => done(err, false));
   })

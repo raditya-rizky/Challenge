@@ -10,6 +10,6 @@ exports.page = (req, res) => {
 
 exports.admin = passport.authenticate("local", {
   successRedirect: "/api/users",
-  failureRedirect: "/api/login",
+  failureRedirect: "/api/login-admin",
   failureFlash: true,
 });

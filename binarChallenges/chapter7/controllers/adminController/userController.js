@@ -1,4 +1,5 @@
 const { UserGame, UserProfile, UserHistory } = require("../../models");
+const bcrypt = require("bcrypt");
 
 exports.index = async (req, res) => {
   const allUsers = await UserGame.findAll({
@@ -22,7 +23,7 @@ exports.create = (req, res) => {
 exports.store = async (req, res) => {
   const createUser = await UserGame.create({
     username: req.body.username,
-    password: req.body.password,
+    password: await bcrypt.hash(req.body.password, 10),
   });
 
   const createProfile = await UserProfile.create({
@@ -69,7 +70,7 @@ exports.update = async (req, res) => {
   const updateUser = await UserGame.update(
     {
       username: username,
-      password: password,
+      password: await bcrypt.hash(password, 10),
     },
     {
       where: {
