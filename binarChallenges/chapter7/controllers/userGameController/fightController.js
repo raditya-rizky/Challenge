@@ -31,7 +31,7 @@ exports.fight = async (req, res) => {
     data[id] = {
       player1: playerOne,
       player2: null,
-      result: hasil,
+      // result: hasil,
     };
   } else {
     data[id].player2 = playerTwo;
@@ -44,7 +44,10 @@ exports.fight = async (req, res) => {
     delete wait[id];
   }
 
-  res.json(logic(data[id].player1, data[id].player2));
+  res.json({
+    data: data[id],
+    result: logic(data[id].player1, data[id].player2),
+  });
 
   return hasil;
 
