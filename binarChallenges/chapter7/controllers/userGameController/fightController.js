@@ -27,22 +27,6 @@ exports.fight = async (req, res) => {
   const playerTwo = req.body.choose;
   let hasil = null;
 
-  if (playerOne === "rock" && playerTwo === "scissor") {
-    hasil = "Player 1 Win";
-  } else if (playerOne === "scissor" && playerTwo === "paper") {
-    hasil = "Player 1 Win";
-  } else if (playerOne === "paper" && playerTwo === "rock") {
-    hasil = "player 1 win";
-  } else if (playerOne === "scissor" && playerTwo === "rock") {
-    hasil = "player 2 win";
-  } else if (playerOne === "paper" && playerTwo === "scissor") {
-    hasil = "player 2 win";
-  } else if (playerOne === "rock" && playerTwo === "paper") {
-    hasil = "player 2 win";
-  } else {
-    hasil = "Draw";
-  }
-
   if (!data[id]) {
     data[id] = {
       player1: playerOne,
@@ -60,7 +44,8 @@ exports.fight = async (req, res) => {
     delete wait[id];
   }
 
-  res.json(data[id]);
+  res.json(logic(data[id].player1, data[id].player2));
+
   return hasil;
 
   // const id = req.params.id;
