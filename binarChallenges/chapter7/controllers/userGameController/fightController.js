@@ -44,10 +44,20 @@ exports.fight = async (req, res) => {
     delete wait[id];
   }
 
-  res.json({
-    data: data[id],
+  const history = await GamePlay.create({
+    player1: data[id].player1,
+    player2: data[id].player2,
+    roomId: id,
     result: logic(data[id].player1, data[id].player2),
   });
+
+  const theRoom = await GamePlay.findAll({
+    where: {
+      roomId: id,
+    },
+  });
+
+  res.json({ conclusion: history, roomDetail: theRoom });
 
   return hasil;
 

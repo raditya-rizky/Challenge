@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       player1: DataTypes.STRING,
       player2: DataTypes.STRING,
       roomId: DataTypes.INTEGER,
+      result: DataTypes.STRING,
     },
     {
       sequelize,

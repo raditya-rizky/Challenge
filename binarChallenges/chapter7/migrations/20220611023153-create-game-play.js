@@ -22,6 +22,9 @@ module.exports = {
           key: "id",
         },
       },
+      result: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
