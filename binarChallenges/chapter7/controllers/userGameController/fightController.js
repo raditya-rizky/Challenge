@@ -38,7 +38,7 @@ exports.fight = async (req, res) => {
 
   console.log(availableRoom[availableRoom.length - 1]);
   if (
-    availableRoom.length >= 6 &&
+    availableRoom.length >= 3 &&
     availableRoom[availableRoom.length - 1].player2 !== null
   )
     return res.json({ message: "room expired", score: room });
