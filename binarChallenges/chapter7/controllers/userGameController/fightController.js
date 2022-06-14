@@ -23,44 +23,34 @@ exports.get = async (req, res) => {
 // let result;
 exports.fight = async (req, res) => {
   const id = req.params.id;
-  const room = await Room.findOne({
-    where: {
-      id,
-    },
-    include: "game",
-  });
-  if (!room) return res.json({ message: "room doesn't exist" });
-  const availableRoom = await GamePlay.findAll({ where: { roomId: id } });
+  const playerOne = req.body.choose;
+  const playerTwo = req.body.choose;
+  let hasil = null;
 
-  console.log(availableRoom[availableRoom.length - 1]);
-  if (
-    availableRoom.length >= 3 &&
-    availableRoom[availableRoom.length - 1].player2 !== null
-  )
-    return res.json({ message: "room expired", score: room });
-
-  const gameNow = await GamePlay.findOne({
-    where: {
-      player2: null,
-      roomId: id,
-    },
-  });
-  if (!gameNow) {
-    await GamePlay.create({
-      player1: req.body.choose,
-      player2: null,
-      roomId: id,
-    });
+  if (playerOne === "rock" && playerTwo === "scissor") {
+    hasil = "Player 1 Win";
+  } else if (playerOne === "scissor" && playerTwo === "paper") {
+    hasil = "Player 1 Win";
+  } else if (playerOne === "paper" && playerTwo === "rock") {
+    hasil = "player 1 win";
+  } else if (playerOne === "scissor" && playerTwo === "rock") {
+    hasil = "player 2 win";
+  } else if (playerOne === "paper" && playerTwo === "scissor") {
+    hasil = "player 2 win";
+  } else if (playerOne === "rock" && playerTwo === "paper") {
+    hasil = "player 2 win";
   } else {
-    await GamePlay.update(
-      { player2: req.body.choose },
-      {
-        where: {
-          player2: null,
-          roomId: id,
-        },
-      }
-    );
+    hasil = "Draw";
+  }
+
+  if (!data[id]) {
+    data[id] = {
+      player1: playerOne,
+      player2: null,
+      result: hasil,
+    };
+  } else {
+    data[id].player2 = playerTwo;
   }
 
   if (!wait[id]) {
@@ -69,11 +59,62 @@ exports.fight = async (req, res) => {
     wait[id].resolve();
     delete wait[id];
   }
-  const player = await GamePlay.findOne({
-    where: {
-      roomId: id,
-    },
-  });
-  const hasil = logic(player.player1, player.player2);
-  res.json({ room });
+
+  res.json(data[id]);
+  return hasil;
+
+  // const id = req.params.id;
+  // const room = await Room.findOne({
+  //   where: {
+  //     id,
+  //   },
+  //   include: "game",
+  // });
+  // if (!room) return res.json({ message: "room doesn't exist" });
+  // const availableRoom = await GamePlay.findAll({ where: { roomId: id } });
+
+  // console.log(availableRoom[availableRoom.length - 1]);
+  // if (
+  //   availableRoom.length >= 3 &&
+  //   availableRoom[availableRoom.length - 1].player2 !== null
+  // )
+  //   return res.json({ message: "room expired", score: room });
+
+  // const gameNow = await GamePlay.findOne({
+  //   where: {
+  //     player2: null,
+  //     roomId: id,
+  //   },
+  // });
+  // if (!gameNow) {
+  //   await GamePlay.create({
+  //     player1: req.body.choose,
+  //     player2: null,
+  //     roomId: id,
+  //   });
+  // } else {
+  //   await GamePlay.update(
+  //     { player2: req.body.choose },
+  //     {
+  //       where: {
+  //         player2: null,
+  //         roomId: id,
+  //       },
+  //     }
+  //   );
+  // }
+
+  // if (!wait[id]) {
+  //   await waitEnemyResponse(id);
+  // } else {
+  //   wait[id].resolve();
+  //   delete wait[id];
+  // }
+  // const player = await GamePlay.findOne({
+  //   where: {
+  //     roomId: id,
+  //   },
+  // });
+  // const hasil = logic(player.player1, player.player2);
+  // res.json({ room });
 };
