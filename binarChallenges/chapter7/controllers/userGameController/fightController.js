@@ -27,11 +27,27 @@ exports.fight = async (req, res) => {
   const playerTwo = req.body.choose;
   let hasil = null;
 
+  const room = await Room.findOne({
+    where: {
+      id,
+    },
+    include: "game",
+  });
+  if (!room) return res.json({ message: "room doesn't exist" });
+  const availableRoom = await GamePlay.findAll({ where: { roomId: id } });
+
+  console.log(availableRoom[availableRoom.length - 1]);
+  if (
+    availableRoom.length >= 6 &&
+    availableRoom[availableRoom.length - 1].player2 !== null
+  )
+    return res.json({ message: "room expired", score: room });
+
   if (!data[id]) {
     data[id] = {
       player1: playerOne,
       player2: null,
-      // result: hasil,
+      // result: logic(data[id].player1, data[id].player2),
     };
   } else {
     data[id].player2 = playerTwo;
@@ -51,13 +67,11 @@ exports.fight = async (req, res) => {
     result: logic(data[id].player1, data[id].player2),
   });
 
-  const theRoom = await GamePlay.findAll({
-    where: {
-      roomId: id,
-    },
-  });
-
-  res.json({ conclusion: history, roomDetail: theRoom });
+  res.json({ conclusion: history, roomDetail: availableRoom });
+  // res.json({
+  //   conclusion: logic(data[id].player1, data[id].player2),
+  //   roomDetail: data[id],
+  // });
 
   return hasil;
 
