@@ -103,11 +103,14 @@ exports.fight = async (req, res) => {
       player1: req.body.choose,
       player2: null,
       roomId: id,
-      result: logic(this.player1, this.player2),
+      // result: logic(req.body.choose, this.player2),
     });
   } else {
     await GamePlay.update(
-      { player2: req.body.choose },
+      {
+        player2: req.body.choose,
+        // result: logic(req.body.choose, this.player1),
+      },
       {
         where: {
           player2: null,
@@ -129,6 +132,24 @@ exports.fight = async (req, res) => {
     },
     order: [["createdAt", "DESC"]],
   });
-  const hasil = logic(player.player1, player.player2);
-  res.json(player);
+
+  const updateResult = await GamePlay.update(
+    {
+      result: logic(player.player1, player.player2),
+    },
+    {
+      where: {
+        roomId: id,
+      },
+    }
+  );
+
+  const playerGame = await GamePlay.findOne({
+    where: {
+      roomId: id,
+    },
+    order: [["createdAt", "DESC"]],
+  });
+
+  res.json(playerGame);
 };
