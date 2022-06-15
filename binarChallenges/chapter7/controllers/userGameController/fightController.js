@@ -175,8 +175,10 @@ exports.fight = async (req, res) => {
     let winner;
     if (theWinner >= 2) {
       winner = "Player1";
-    } else {
+    } else if (theWinner <= 1) {
       winner = "Player2";
+    } else {
+      winner = "Draw";
     }
     return res.json({
       message:
