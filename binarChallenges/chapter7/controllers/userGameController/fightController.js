@@ -83,14 +83,18 @@ exports.fight = async (req, res) => {
     include: "game",
   });
   if (!room) return res.json({ message: "room doesn't exist" });
-  const availableRoom = await GamePlay.findAll({ where: { roomId: id } });
 
-  console.log(availableRoom[availableRoom.length - 1]);
-  if (
-    availableRoom.length >= 3 &&
-    availableRoom[availableRoom.length - 1].player2 !== null
-  )
-    return res.json({ message: "room expired", score: room });
+  // const availableRoom = await GamePlay.findAll({ where: { roomId: id } });
+
+  // console.log(availableRoom[availableRoom.length - 1]);
+  // if (
+  //   availableRoom.length >= 3 &&
+  //   availableRoom[availableRoom.length - 1].player2 !== null
+  // )
+  //   return res.json({
+  //     message: "this room has reached the limit of the game",
+  //     score: availableRoom,
+  //   });
 
   const gameNow = await GamePlay.findOne({
     where: {
@@ -139,6 +143,8 @@ exports.fight = async (req, res) => {
     },
     {
       where: {
+        player1: player.player1,
+        player2: player.player2,
         roomId: id,
       },
     }
@@ -150,6 +156,35 @@ exports.fight = async (req, res) => {
     },
     order: [["createdAt", "DESC"]],
   });
+
+  const roomResult = await Room.findOne({
+    where: {
+      id,
+    },
+    include: "game",
+  });
+
+  const roomNow = await GamePlay.findAll({ where: { roomId: id } });
+
+  console.log(roomNow[roomNow.length - 1]);
+  if (roomNow.length >= 3 && roomNow[roomNow.length - 1].player2 !== null) {
+    const whoIsTheWinner = await GamePlay.findAll({
+      where: { roomId: id, result: "player1 win & player2 lose" },
+    });
+    let theWinner = whoIsTheWinner.length;
+    let winner;
+    if (theWinner >= 2) {
+      winner = "Player1";
+    } else {
+      winner = "Player2";
+    }
+    return res.json({
+      message:
+        "this room has reached the limit of the game, here is the result",
+      winner: winner,
+      score: roomResult,
+    });
+  }
 
   res.json(playerGame);
 };
