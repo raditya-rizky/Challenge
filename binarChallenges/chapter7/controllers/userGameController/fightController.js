@@ -166,24 +166,23 @@ exports.fight = async (req, res) => {
 
   const roomNow = await GamePlay.findAll({ where: { roomId: id } });
 
-  console.log(roomNow[roomNow.length - 1]);
   if (roomNow.length >= 3 && roomNow[roomNow.length - 1].player2 !== null) {
-    const whoIsTheWinner = await GamePlay.findAll({
-      where: { roomId: id, result: "player1 win & player2 lose" },
-    });
-    let theWinner = whoIsTheWinner.length;
-    let winner;
-    if (theWinner >= 2) {
-      winner = "Player1";
-    } else if (theWinner <= 1) {
-      winner = "Player2";
-    } else {
-      winner = "Draw";
-    }
+    // const whoIsTheWinner = await GamePlay.findAll({
+    //   where: { roomId: id, result: "player1 win & player2 lose" },
+    // });
+    // let theWinner = whoIsTheWinner.length;
+    // let winner;
+    // if (theWinner >= 2) {
+    //   winner = "Player1";
+    // } else if (theWinner <= 1) {
+    //   winner = "Player2";
+    // } else {
+    //   winner = "Draw";
+    // }
     return res.json({
       message:
         "this room has reached the limit of the game, here is the result",
-      winner: winner,
+      // winner: winner,
       score: roomResult,
     });
   }
